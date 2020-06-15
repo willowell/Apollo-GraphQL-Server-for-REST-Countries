@@ -20,6 +20,7 @@
     "plzfixmygarbagecodekthx": "npx eslint . --fix"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.155",
     "@types/node": "^14.0.13",
     "@typescript-eslint/eslint-plugin": "^3.2.0",
     "eslint": "^7.2.0",

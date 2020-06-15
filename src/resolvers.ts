@@ -1,52 +1,52 @@
-const _ = require('lodash')
+import _ from 'lodash'
 
 const resolvers = {
   Query: {
-    allCountries: async (parent, args, ctx) => {
+    allCountries: async (parent: any, args: any, ctx: any) => {
       return ctx.dataSources.countriesAPI.getAllCountries()
     },
 
-    countryByName: async (parent, args, ctx) => {
+    countryByName: async (parent: any, args: any, ctx: any) => {
       const countryData = ctx.dataSources.countriesAPI.getCountryByName(args.name)
       return countryData
     },
 
-    countryByFullName: async (parent, args, ctx) => {
+    countryByFullName: async (parent: any, args: any, ctx: any) => {
       const countryData = ctx.dataSources.countriesAPI.getCountryByFullName(args.name)
-      return countryData.then(data => data[0])
+      return countryData.then((data: any) => data[0])
     },
 
-    countryByISOCode: async (parent, args, ctx) => {
+    countryByISOCode: async (parent: any, args: any, ctx: any) => {
       const countryData = ctx.dataSources.countriesAPI.getCountryByISOCode(args.code)
-      return countryData.then(data => data[0])
+      return countryData.then((data: any) => data[0])
     },
 
-    countriesByISOCodes: async (parent, args, ctx) => {
+    countriesByISOCodes: async (parent: any, args: any, ctx: any) => {
       const countryData = ctx.dataSources.countriesAPI.getCountriesByISOCodes(args.codes)
       return countryData
     },
 
-    countryByCurrency: async (parent, args, ctx) => {
+    countryByCurrency: async (parent: any, args: any, ctx: any) => {
       const countryData = ctx.dataSources.countriesAPI.getCountryByCurrency(args.currency)
-      return countryData.then(data => data[0])
+      return countryData.then((data: any) => data[0])
     },
 
-    countriesByLanguage: async (parent, args, ctx) => {
+    countriesByLanguage: async (parent: any, args: any, ctx: any) => {
       const countryData = ctx.dataSources.countriesAPI.getCountriesByLanguage(args.language)
       return countryData
     },
 
-    countryByCapitalCity: async (parent, args, ctx) => {
+    countryByCapitalCity: async (parent: any, args: any, ctx: any) => {
       const countryData = ctx.dataSources.countriesAPI.getCountryByCapitalCity(args.city)
-      return countryData.then(data => data[0])
+      return countryData.then((data: any) => data[0])
     },
 
-    countryByCallingCode: async (parent, args, ctx) => {
+    countryByCallingCode: async (parent: any, args: any, ctx: any) => {
       const countryData = ctx.dataSources.countriesAPI.getCountryByCallingCode(args.code)
-      return countryData.then(data => data[0])
+      return countryData.then((data: any) => data[0])
     },
 
-    countriesByRegion: async (parent, args, ctx) => {
+    countriesByRegion: async (parent: any, args: any, ctx: any) => {
       const countryData = ctx.dataSources.countriesAPI.getCountriesByRegion(args.region)
       return countryData
     },
@@ -59,16 +59,16 @@ const resolvers = {
     // the query down to a region. I could do this, but I would have to know which subregions
     // are in which regions. Or, I could ask the caller to provide the region and use the
     // `getCountriesByRegion` function above, but I will still have to filter on the subregion.
-    countriesBySubregion: async (parent, args, ctx) => {
+    countriesBySubregion: async (parent: any, args: any, ctx: any) => {
       const countryData = ctx.dataSources.countriesAPI.getAllCountries()
-      return countryData.then(data => _.find(data, _.matchesProperty('subregion', args.subregion)))
+      return countryData.then((data: any) => _.find(data, _.matchesProperty('subregion', args.subregion)))
     },
 
-    countriesByRegionalBloc: async (parent, args, ctx) => {
+    countriesByRegionalBloc: async (parent: any, args: any, ctx: any) => {
       const countryData = ctx.dataSources.countriesAPI.getCountriesByRegionalBloc(args.bloc)
       return countryData
     }
   }
 }
 
-module.exports = resolvers
+export default resolvers

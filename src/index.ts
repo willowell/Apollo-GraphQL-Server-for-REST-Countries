@@ -8,18 +8,18 @@
  * Based on https://moonhighway.com/apollo-datasources
  */
 
-const { ApolloServer } = require('apollo-server')
+import { ApolloServer } from 'apollo-server'
 
-const typeDefs = require('./schema')
-const CountriesAPI = require('./CountriesAPI')
-const resolvers = require('./resolvers')
+import typeDefs from './schema'
+import CountriesAPI from './CountriesAPI'
+import resolvers from './resolvers'
 
 async function main () {
   const dataSources = () => ({
     countriesAPI: new CountriesAPI()
   })
 
-  const context = async ({ req }) => {}
+  const context = async ({ req }: any) => {}
 
   const server = new ApolloServer({
     typeDefs,
