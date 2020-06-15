@@ -92,9 +92,9 @@ const typeDefs = gql`
     countriesByLanguage(language: String!): [Country]
     countryByCapitalCity(city: String!): Country!
     countryByCallingCode(code: String!): Country!
-    countriesByRegion(region: String!): [Country]
+    countriesByRegion(region: Region!): [Country]
     countriesBySubregion(subregion: String!): [Country]
-    countriesByRegionalBloc(bloc: String!): [Country]
+    countriesByRegionalBloc(bloc: RegionalBloc!): [Country]
   }
 `
 
