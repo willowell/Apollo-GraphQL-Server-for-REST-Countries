@@ -14,16 +14,21 @@ const typeDefs = require('./schema')
 const CountriesAPI = require('./CountriesAPI')
 const resolvers = require('./resolvers')
 
+const dataSources = () => ({
+  countriesAPI: new CountriesAPI()
+})
+
+const context = async ({ req }) => {}
+
 const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    dataSources: () => {
-      return {
-        countriesAPI: new CountriesAPI(),
-      }
-    },
+  typeDefs,
+  resolvers,
+  dataSources,
+  context,
+  introspection: true,
+  playground: true
 })
 
 server.listen().then(({ url }) => {
-    console.log(`🤖 BEEP BOOP 🤖 I'm listening at ${url}`)
+  console.log(`🤖 BEEP BOOP 🤖 I'm listening at ${url}`)
 })
