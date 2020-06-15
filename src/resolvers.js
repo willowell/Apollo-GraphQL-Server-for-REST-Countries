@@ -8,7 +8,7 @@ const resolvers = {
 
     countryByName: async (parent, args, ctx) => {
       const countryData = ctx.dataSources.countriesAPI.getCountryByName(args.name)
-      return countryData.then(data => data[0])
+      return countryData
     },
 
     countryByFullName: async (parent, args, ctx) => {
@@ -61,7 +61,7 @@ const resolvers = {
     // `getCountriesByRegion` function above, but I will still have to filter on the subregion.
     countriesBySubregion: async (parent, args, ctx) => {
       const countryData = ctx.dataSources.countriesAPI.getAllCountries()
-      return countryData.then(data => data.filter((country) => country.subregion === args.subregion))
+      return countryData.then(data => _.find(data, _.matchesProperty('subregion', args.subregion)))
     },
 
     countriesByRegionalBloc: async (parent, args, ctx) => {
