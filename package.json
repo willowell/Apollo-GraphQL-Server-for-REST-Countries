@@ -1,16 +1,27 @@
 {
-  "name": "moonhighway-apollo-tutorial",
+  "name": "countries-apollo-server",
+  "description": "An Apollo GraphQL Server for the REST Countries API",
+  "keywords": [
+    "apollo",
+    "apollo-server",
+    "rest",
+    "countries",
+    "api"
+  ],
   "version": "1.0.0",
-  "main": "index.js",
+  "author": "William Howell <wlm.howell@gmail.com>",
   "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "NODE_ENV=development nodemon ."
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
   "dependencies": {
     "apollo-datasource-rest": "^0.9.2",
     "apollo-server": "^2.14.4",
     "graphql": "^15.1.0",
-    "lodash": "^4.17.15",
-    "nodemon": "^2.0.4"
-  },
-  "scripts": {
-    "start": "NODE_ENV=development nodemon ."
+    "lodash": "^4.17.15"
   }
 }
