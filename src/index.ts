@@ -8,11 +8,13 @@
  * Based on https://moonhighway.com/apollo-datasources
  */
 
+import { readFileSync } from 'fs'
 import { ApolloServer } from 'apollo-server'
-
-import typeDefs from './schema'
 import CountriesAPI from './CountriesAPI'
 import resolvers from './resolvers'
+import path from 'path'
+
+const typeDefs = readFileSync(path.join(__dirname, '/../schema.graphql')).toString()
 
 async function main (): Promise<void> {
   const dataSources = (): any => ({
@@ -20,9 +22,9 @@ async function main (): Promise<void> {
   })
 
   const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    dataSources,
+    typeDefs: typeDefs,
+    resolvers: resolvers,
+    dataSources: dataSources,
     introspection: true,
     playground: true
   })
