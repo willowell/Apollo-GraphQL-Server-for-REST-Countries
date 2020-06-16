@@ -5038,6 +5038,11 @@ pupa@^2.0.1:
   dependencies:
     escape-goat "^2.0.0"
 
+purify-ts@^0.15.1:
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/purify-ts/-/purify-ts-0.15.1.tgz#fb32811d745d4fce7c592d36fc64c01a57a4dbf8"
+  integrity sha512-3PjYD3wTQDE+fH2alMXGRjvk3ufKhhkAGw3d1gb2vsVRkLSc8EzEx9XJHvWYdpSZpljTTcoiHtIPVmyuHhrJ9A==
+
 qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"

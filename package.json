@@ -46,6 +46,7 @@
     "apollo-datasource-rest": "^0.9.2",
     "apollo-server": "^2.14.4",
     "graphql": "^15.1.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "purify-ts": "^0.15.1"
   }
 }

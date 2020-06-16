@@ -39,3 +39,6 @@ My process for this project:
 7. I also added StandardJS for a consistent look and feel for the code.
 8. Then, I switched the JavaScript code over to TypeScript and made some minor refactors, including switching over to ES6 module syntax and adding types to parameters.
 9. Next, I ran ESLint and followed it until it did not produce any errors.
+10. Then, I ran graphql-codegen and integrated its types into the server.
+11. After that, I moved the schema into a separate GraphQL file, but I kept running into errors trying to use `loadSchemaSync` from `@graphql-tools`, so I just stuck to a simple `readFileSync` instead.
+12. And then, I added reducers for my types.

@@ -55,7 +55,7 @@ const resolvers = {
         // `getCountriesByRegion` function above, but I will still have to filter on the subregion.
         countriesBySubregion: async (parent, args, ctx) => {
             const countryData = ctx.dataSources.countriesAPI.getAllCountries();
-            return countryData.then((data) => lodash_1.default.filter(data, (country) => country.subregion === args.subregion));
+            return countryData.then((data) => lodash_1.default.filter(data, lodash_1.default.matchesProperty('subregion', args.subregion)));
         },
         countriesByRegionalBloc: async (parent, args, ctx) => {
             const countryData = ctx.dataSources.countriesAPI.getCountriesByRegionalBloc(args.bloc);
