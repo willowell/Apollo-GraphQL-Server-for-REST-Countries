@@ -4,6 +4,8 @@ generates:
     config:
       mappers:
         Country: ./src/models#Country
+      avoidOptionals: true
     plugins:
       - typescript
       - typescript-resolvers
+      
