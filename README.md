@@ -38,3 +38,4 @@ My process for this project:
 6. Next, I started pulling in dependencies from my attempt at an Apollo Server in TypeScript.
 7. I also added StandardJS for a consistent look and feel for the code.
 8. Then, I switched the JavaScript code over to TypeScript and made some minor refactors, including switching over to ES6 module syntax and adding types to parameters.
+9. Next, I ran ESLint and followed it until it did not produce any errors.

@@ -1,0 +1,9 @@
+schema: './src/schema.ts'
+generates:
+  ./src/gen/resolver-types.ts:
+    config:
+      mappers:
+        Country: ./src/models#Country
+    plugins:
+      - typescript
+      - typescript-resolvers
