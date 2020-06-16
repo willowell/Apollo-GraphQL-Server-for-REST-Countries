@@ -11,13 +11,13 @@
   "version": "1.0.0",
   "author": "William Howell <wlm.howell@gmail.com>",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "build": "rimraf ./build && tsc",
     "exec": "node build/index.js",
-    "start": "yarn build && yarn exec",
+    "start": "yarn build && node build/index.js",
     "start:dev": "NODE_ENV=development nodemon .",
-    "plzfixmygarbagecodekthx": "npx eslint . --fix"
+    "plzfixmycode": "npx eslint . --fix"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.155",
