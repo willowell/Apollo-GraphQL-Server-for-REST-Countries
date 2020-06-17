@@ -124,6 +124,11 @@ class CountriesAPI extends apollo_datasource_rest_1.RESTDataSource {
     }
     // Notice that we have a resolver for `getCountriesBySubregion`
     // and a corresponding query, but no corresponding API call here!
+    // Never mind, I decided to add one anyway ;-)
+    async getCountriesBySubregion(subregion) {
+        const res = await this.get('/all');
+        return Array.isArray(res) ? lodash_1.default.filter(res, lodash_1.default.matchesProperty('subregion', subregion)) : [];
+    }
     // Search by regional bloc:
     // EU, EFTA, CARICOM, PA, AU, USAN, EEU, AL, ASEAN, CAIS, CEFTA, NAFTA, SAARC
     async getCountriesByRegionalBloc(bloc) {

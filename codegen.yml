@@ -1,9 +1,9 @@
-schema: './src/schema.graphql'
+schema: './graphql/schema.graphql'
 generates:
   ./src/gen/graphql-types.ts:
-    config:
-      avoidOptionals: true
     plugins:
       - typescript
       - typescript-resolvers
+    config:
+      avoidOptionals: true
       

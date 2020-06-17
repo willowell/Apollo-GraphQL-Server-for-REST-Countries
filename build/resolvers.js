@@ -1,9 +1,5 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const lodash_1 = __importDefault(require("lodash"));
 const resolvers = {
     Query: {
         allCountries: async (parent, args, ctx) => {
@@ -54,8 +50,8 @@ const resolvers = {
         // are in which regions. Or, I could ask the caller to provide the region and use the
         // `getCountriesByRegion` function above, but I will still have to filter on the subregion.
         countriesBySubregion: async (parent, args, ctx) => {
-            const countryData = ctx.dataSources.countriesAPI.getAllCountries();
-            return countryData.then((data) => lodash_1.default.filter(data, lodash_1.default.matchesProperty('subregion', args.subregion)));
+            const countryData = ctx.dataSources.countriesAPI.getCountriesBySubregion();
+            return countryData;
         },
         countriesByRegionalBloc: async (parent, args, ctx) => {
             const countryData = ctx.dataSources.countriesAPI.getCountriesByRegionalBloc(args.bloc);

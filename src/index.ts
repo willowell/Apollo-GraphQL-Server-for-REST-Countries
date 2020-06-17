@@ -1,20 +1,11 @@
-/**
- * William Howell
- * 2020-June-15
- * Practice with Apollo, GraphQL, and a REST API
- */
-
-/**
- * Based on https://moonhighway.com/apollo-datasources
- */
-
 import { readFileSync } from 'fs'
 import { ApolloServer } from 'apollo-server'
 import CountriesAPI from './CountriesAPI'
 import resolvers from './resolvers'
 import path from 'path'
+import { config } from './config'
 
-const typeDefs = readFileSync(path.join(__dirname, '/../schema.graphql')).toString()
+const typeDefs = readFileSync(path.join(__dirname, config.schemaPath)).toString()
 
 async function main (): Promise<void> {
   const dataSources = (): any => ({

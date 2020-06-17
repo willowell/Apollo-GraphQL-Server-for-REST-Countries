@@ -25,7 +25,10 @@ To build and run this server on your machine:
 1. Clone or download this repository.
 2. `cd` into the directory and run `yarn`.
 3. Run `yarn start` to start the server.
-4. Enjoy!!
+4. If all went well, the server will be ready at http://localhost:4000/.
+5. Enjoy!!
+
+> ⚠️ **If you run `yarn graphql-codegen`, make sure to add `import { Maybe } from 'purify-ts/Maybe';` to the top of the resulting file.** I use purify-ts's Maybe monad in `CountriesAPI` instead of the generated `Maybe<T> = T | null;` since I can match on whether the Maybe is a Just or a Nothing. I did not know how to replace the generated Maybe with purify-ts's Maybe, so I just replaced that line in the file. If you rerun the code generator, it will revert `import { Maybe } from 'purify-ts/Maybe';` to `Maybe<T> = T | null;`.
 
 If you have any problems, questions, suggestions, or critiques, please open an issue on this repository!
 

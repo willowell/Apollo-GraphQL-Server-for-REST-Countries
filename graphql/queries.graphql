@@ -1,0 +1,29 @@
+# Some examples of queries you can call on this server:
+
+query GetCountryByFullName($name: String!) {
+  countryByName(name: $name) {
+    name
+    population
+    area
+    region
+    subregion
+    languages {
+      name
+      nativeName
+    }
+  }
+}
+
+query GetCountriesByRegion($region: Region!) {
+  countriesByRegion(region: $region) {
+    name
+    population
+    area
+    region
+    subregion
+    languages {
+      name
+      nativeName
+    }
+  }
+}
