@@ -12,10 +12,14 @@ This is not a simple copy-paste of the server from the tutorial above, though! ð
 I added a number of features:
 * The schema, API class, and resolvers are in their own files,
 * The schema covers all fields the REST Countries API has to offer.
+* The schema lives in a graphql file - not in a `gql`-tagged string.
+* There is a `queries.graphql` for a few examples of queries that one can run against this server.
 * `enum` fields for regions and regional blocs.
 * There are get methods in the `CountriesAPI` class and corresponding resolvers for each of the endpoints listed.
 * I have also added a resolver for a field that is *not* an API endpoint (subregion) for an example of that.
 * Lodash because I love functional programming too much.
+* I rewrote the server in TypeScript, and now everything is typed thanks to graphql-codegen.
+* The code adheres to Standard JS's style.
 
 Environment Details:
 * NodeJS version: 13.11.0

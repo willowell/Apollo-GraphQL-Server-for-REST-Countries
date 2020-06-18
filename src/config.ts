@@ -1,4 +1,4 @@
 export const config = {
-    schemaPath: "../graphql/schema.graphql",
-    graphqlDir: "../graphql"
+  schemaPath: '../graphql/schema.graphql',
+  graphqlDir: '../graphql'
 }

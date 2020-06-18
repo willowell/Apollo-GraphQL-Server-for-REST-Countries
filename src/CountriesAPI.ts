@@ -7,7 +7,7 @@ import { Country, Language, Translations, Bloc, Region, RegionalBloc, Currency }
  *
  * json = [{country1}, {country2}], etc.
  */
-export type CountryJSON = Array<Country>
+export type CountryJSON = Country[]
 
 export default class CountriesAPI extends RESTDataSource {
   constructor () {
@@ -15,7 +15,7 @@ export default class CountriesAPI extends RESTDataSource {
     this.baseURL = 'https://restcountries.eu/rest/v2'
   }
 
-  countryReducer(incoming: Country): Country {
+  countryReducer (incoming: Country): Country {
     return {
       name: incoming.name,
       topLevelDomain: incoming.topLevelDomain,
@@ -44,7 +44,7 @@ export default class CountriesAPI extends RESTDataSource {
     }
   }
 
-  currencyReducer(incoming: Currency): Currency {
+  currencyReducer (incoming: Currency): Currency {
     return {
       code: incoming.code,
       name: incoming.name,
@@ -52,7 +52,7 @@ export default class CountriesAPI extends RESTDataSource {
     }
   }
 
-  languageReducer(incoming: Language): Language {
+  languageReducer (incoming: Language): Language {
     return {
       iso639_1: incoming.iso639_1,
       iso639_2: incoming.iso639_2,
@@ -61,7 +61,7 @@ export default class CountriesAPI extends RESTDataSource {
     }
   }
 
-  translationsReducer(incoming: Translations): Translations {
+  translationsReducer (incoming: Translations): Translations {
     return {
       de: incoming.de,
       es: incoming.es,
@@ -73,7 +73,7 @@ export default class CountriesAPI extends RESTDataSource {
     }
   }
 
-  blocReducer(incoming: Bloc): Bloc {
+  blocReducer (incoming: Bloc): Bloc {
     return {
       acronym: incoming.acronym,
       name: incoming.name,
@@ -151,7 +151,7 @@ export default class CountriesAPI extends RESTDataSource {
   // `getCountriesByRegion` function above, but I will still have to filter on the subregion.
   async getCountriesBySubregion (subregion: string): Promise<CountryJSON> {
     const res: CountryJSON = await this.get('/all')
-    return Array.isArray(res) ? _.filter(res, _.matchesProperty('subregion', subregion)): []
+    return Array.isArray(res) ? _.filter(res, _.matchesProperty('subregion', subregion)) : []
   }
 
   // Search by regional bloc:

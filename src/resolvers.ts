@@ -50,7 +50,7 @@ const resolvers: Resolvers = {
       const countryData = ctx.dataSources.countriesAPI.getCountriesByRegion(args.region)
       return countryData
     },
-    
+
     countriesBySubregion: async (parent, args, ctx) => {
       const countryData = ctx.dataSources.countriesAPI.getCountriesBySubregion(args.subregion)
       return countryData
