@@ -12,64 +12,64 @@ class CountriesAPI extends apollo_datasource_rest_1.RESTDataSource {
     }
     countryReducer(incoming) {
         return {
-            name: incoming.name || null,
-            topLevelDomain: incoming.topLevelDomain || null,
-            alpha2code: incoming.alpha2code || null,
-            alpha3code: incoming.alpha3code || null,
-            callingCodes: incoming.callingCodes || null,
-            capital: incoming.capital || null,
-            altSpellings: incoming.altSpellings || null,
-            region: incoming.region || null,
-            subregion: incoming.subregion || null,
-            population: incoming.population || 0,
-            latlng: incoming.latlng || [0, 0],
-            demonym: incoming.demonym || null,
-            area: incoming.area || 0,
-            gini: incoming.gini || null,
-            timezones: incoming.timezones || null,
-            borders: incoming.borders || null,
-            nativeName: incoming.nativeName || null,
-            numericCode: incoming.numericCode || null,
-            currencies: incoming.currencies || null,
-            languages: incoming.languages || null,
-            translations: incoming.translations || null,
-            flag: incoming.flag || null,
-            regionalBlocs: incoming.regionalBlocs || null,
-            cioc: incoming.cioc || null
+            name: incoming.name,
+            topLevelDomain: incoming.topLevelDomain,
+            alpha2code: incoming.alpha2code,
+            alpha3code: incoming.alpha3code,
+            callingCodes: incoming.callingCodes,
+            capital: incoming.capital,
+            altSpellings: incoming.altSpellings,
+            region: incoming.region,
+            subregion: incoming.subregion,
+            population: incoming.population,
+            latlng: incoming.latlng,
+            demonym: incoming.demonym,
+            area: incoming.area,
+            gini: incoming.gini,
+            timezones: incoming.timezones,
+            borders: incoming.borders,
+            nativeName: incoming.nativeName,
+            numericCode: incoming.numericCode,
+            currencies: incoming.currencies,
+            languages: incoming.languages,
+            translations: incoming.translations,
+            flag: incoming.flag,
+            regionalBlocs: incoming.regionalBlocs,
+            cioc: incoming.cioc
         };
     }
     currencyReducer(incoming) {
         return {
-            code: incoming.code || null,
-            name: incoming.name || null,
-            symbol: incoming.symbol || null
+            code: incoming.code,
+            name: incoming.name,
+            symbol: incoming.symbol
         };
     }
     languageReducer(incoming) {
         return {
-            iso639_1: incoming.iso639_1 || null,
-            iso639_2: incoming.iso639_2 || null,
-            name: incoming.name || null,
-            nativeName: incoming.nativeName || null
+            iso639_1: incoming.iso639_1,
+            iso639_2: incoming.iso639_2,
+            name: incoming.name,
+            nativeName: incoming.nativeName
         };
     }
     translationsReducer(incoming) {
         return {
-            de: incoming.de || null,
-            es: incoming.es || null,
-            fr: incoming.fr || null,
-            ja: incoming.ja || null,
-            it: incoming.it || null,
-            br: incoming.br || null,
-            pt: incoming.pt || null
+            de: incoming.de,
+            es: incoming.es,
+            fr: incoming.fr,
+            ja: incoming.ja,
+            it: incoming.it,
+            br: incoming.br,
+            pt: incoming.pt
         };
     }
     blocReducer(incoming) {
         return {
-            acronym: incoming.acronym || null,
-            name: incoming.name || null,
-            otherAcronyms: incoming.otherAcronyms || null,
-            otherNames: incoming.otherNames || null
+            acronym: incoming.acronym,
+            name: incoming.name,
+            otherAcronyms: incoming.otherAcronyms,
+            otherNames: incoming.otherNames
         };
     }
     // Get all countries
@@ -122,9 +122,13 @@ class CountriesAPI extends apollo_datasource_rest_1.RESTDataSource {
         const res = await this.get(`region/${region}`);
         return Array.isArray(res) ? res.map(country => this.countryReducer(country)) : [];
     }
-    // Notice that we have a resolver for `getCountriesBySubregion`
-    // and a corresponding query, but no corresponding API call here!
-    // Never mind, I decided to add one anyway ;-)
+    // Notice that the Countries API does not explicitly support subregions as an endpoint.
+    // However, using GraphQL with a filter on getAllCountries, I can add this query and use it
+    // as if it were part of the Countries API.
+    // `getAllCountries()` is appropriate here because I am not assuming I can narrow
+    // the query down to a region. I could do this, but I would have to know which subregions
+    // are in which regions. Or, I could ask the caller to provide the region and use the
+    // `getCountriesByRegion` function above, but I will still have to filter on the subregion.
     async getCountriesBySubregion(subregion) {
         const res = await this.get('/all');
         return Array.isArray(res) ? lodash_1.default.filter(res, lodash_1.default.matchesProperty('subregion', subregion)) : [];

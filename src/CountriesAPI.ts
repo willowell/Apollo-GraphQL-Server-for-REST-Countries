@@ -1,6 +1,5 @@
 import { RESTDataSource } from 'apollo-datasource-rest'
 import _ from 'lodash'
-import { Maybe, Just, Nothing } from 'purify-ts/Maybe'
 import { Country, Language, Translations, Bloc, Region, RegionalBloc, Currency } from './gen/graphql-types'
 
 /**
